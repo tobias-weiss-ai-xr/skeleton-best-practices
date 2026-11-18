@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this best-practices corpus, please cite it as follows."
+title: "<Topic> Best Practices — Curated Reference Corpus"
+abstract: "Skeleton repository for a curated, auto-validated practical-reference corpus. Papers in papers.yaml, everything else generated."
+authors:
+  - family-names: "Weiß"
+    given-names: "Tobias"
+    orcid: ""
+date-released: "2026-09-20"
+license: MIT
+keywords:
+  - best-practices
+  - reference
+  - curated-corpus
+  - papers
+  - open-science
+repository-code: "https://github.com/<YOUR_ORG>/<topic>-best-practices"

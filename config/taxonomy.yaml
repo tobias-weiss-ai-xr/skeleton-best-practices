@@ -1,0 +1,73 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Topic taxonomy — THE one place configuring all pipeline scripts.
+#
+# Bootstrap checklist for a new *-best-practices repo:
+#   1. Set topic.name / short / description (+ openalex_mailto)
+#   2. Define categories and subcategories for your topic
+#   3. Add openalex_queries / arxiv_queries per category
+#   4. Adjust trend_keywords + subcategory_keywords for auto-classification
+#   5. Sanity check:  python3 scripts/research_config.py
+#
+# Schema (validated by research_config.validate_config):
+#   - ids: lowercase kebab-case, unique
+#   - subcategory_keywords: list of {id, keywords} (id must match a subcategory)
+# ─────────────────────────────────────────────────────────────────────────────
+
+topic:
+  name: "TODO Topic Best Practices"
+  short: todo
+  description: TODO one-paragraph description of the topic and goal of this corpus
+  # openalex_mailto: research@example.org   # polite-pool contact for OpenAlex API
+
+taxonomy:
+  categories:
+    - id: fundamentals
+      display: "Fundamentals"
+      description: "TODO core concepts of the topic"
+    - id: security
+      display: "Security"
+      description: "TODO hardening, threat models, safe defaults"
+    - id: operations
+      display: "Operations"
+      description: "TODO running, monitoring, maintaining in production"
+
+  subcategories:
+    - id: method
+      display: "Method"
+      category: fundamentals
+    - id: tool
+      display: "Tool"
+      category: fundamentals
+    - id: practice
+      display: "Practice"
+      category: operations
+
+# Literature discovery queries (per category). Used by
+# scripts/fetch/fetch_openalex_bulk.py and friends.
+openalex_queries:
+  - category: fundamentals
+    query: "TODO fundamentals search terms"
+  - category: security
+    query: "TODO security search terms"
+  - category: operations
+    query: "TODO operations search terms"
+
+arxiv_queries: []          # e.g. [{category: fundamentals, query: "all:..."}]
+other_sources_queries: []  # e.g. [{category: operations, query: "..."}]
+
+# Keywords for burst/trend analysis (standard_stats.py, trend_scanner.py)
+trend_keywords:
+  - survey
+  - benchmark
+  - evaluation
+  - case study
+  - framework
+
+# Auto-classification rules (first match wins; evaluated top to bottom)
+subcategory_keywords:
+  - id: method
+    keywords: ["method", "approach", "algorithm"]
+  - id: tool
+    keywords: ["tool", "toolkit", "framework", "library"]
+  - id: practice
+    keywords: ["practice", "experience", "case study", "deployment"]

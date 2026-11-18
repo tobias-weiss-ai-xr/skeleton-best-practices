@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+
+# Pipeline outputs (generated — never commit)
+papers.json
+statistics.json
+docs/topics/
+docs/papers.json
+docs/research/
+paper/
+verify-sources-report.json
+
+# Generated pipeline outputs (never commit) — except the static paper browser
+docs/*
+!docs/index.html
